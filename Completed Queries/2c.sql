@@ -1,6 +1,5 @@
 USE sakila;
 
-SELECT *
+SELECT last_name, first_name
 FROM actor
-WHERE last_name LIKE '%li%'
-ORDER BY last_name, first_name;
+WHERE last_name LIKE '%li%';
