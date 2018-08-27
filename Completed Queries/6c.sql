@@ -1,9 +1,7 @@
 USE sakila;
 
-SELECT title, (
-    SELECT COUNT(*) 
-    FROM inventory 
-    WHERE film.film_id = inventory.film_id) 
-        AS 'Number of Copies'
+SELECT title, COUNT(actor_id) AS 'Number of Actors' 
 FROM film
-WHERE title = 'Hunchback Impossible';
+JOIN film_actor
+ON film.film_id = film_actor.film_id
+GROUP BY title;
