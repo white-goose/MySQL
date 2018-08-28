@@ -1,10 +1,12 @@
-USE sakila;
 
-SELECT film.title, rental.inventory_id, rental.rental_id
-FROM rental
-     JOIN inventory
-        ON rental.inventory_id = inventory.inventory_id
-     JOIN film
-        ON film.film_id = rental.inventory_id
-;
+#Display the most frequently rented movies in descending order.
+
+SELECT f.title, COUNT(*) AS Number_of_rentals
+FROM rental r
+     JOIN inventory i
+        ON r.inventory_id = i.inventory_id
+     JOIN film f
+        ON f.film_id = i.film_id
+        GROUP BY f.title
+        ORDER BY Number_of_rentals DESC;
 
